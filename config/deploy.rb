@@ -2,6 +2,7 @@ set :application, "hedonisambachtsbier.be"
 set :domain, "joris@hedonisambachtsbier.be" # Le SSH de destination
 set :deploy_to, "/var/www/hedonisambachtsbier.be" # Le répertoire de destination
 set :app_path, "app"
+set :web_path, "web"
 set :user, "joris" # Le nom d’utilisateur du serveur distant
 
 set :repository, "git@github.com:jojotjebaby/my_hedonis.git" # L’URL de votre repository
