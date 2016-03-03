@@ -1,0 +1,29 @@
+{% extends "SiteBundle::layout.html.twig" %}
+
+{% block title %}
+   Homepage - {{ parent() }}
+{% endblock %}
+
+{% block body %}
+<section id="index" style="min-height:60vh;">
+    <div class="row" style="margin-top:20px;">
+      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+        <div class="row">
+
+
+        	<!--the news section -->
+          	<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 row vcenter" style="">
+          		{% include 'SiteBundle:Layout:newsbar.html.twig' with {'listArticles': listArticles } %}
+          	</div><!-- slide show or youtube movie 
+          --><div class="col-xs-12 col-sm-12 col-md-7 col-lg-7 col-md-offset-1 col-lg-offset-1 row vcenter">
+            	<iframe src="https://www.youtube.com/embed/hn_yIy7l8_Q?rel=0&amp;showinfo=0"
+			frameborder="0" allowfullscreen style=" position: relatvie;width:100%;height:400px;%"></iframe>      
+          	</div>
+
+
+
+        </div>
+      </div>
+    </div>
+</section>
+{% endblock %}

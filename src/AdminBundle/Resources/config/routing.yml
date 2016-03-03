@@ -1,0 +1,40 @@
+admin_index:
+    path:     /
+    defaults: { _controller: AdminBundle:Admin:index }
+
+admin_subscribers:
+    path:     /subscribers
+    defaults: { _controller: AdminBundle:Admin:subscribers }
+
+admin_articles:
+    path:     /articles
+    defaults: { _controller: AdminBundle:Admin:articles }
+
+admin_articles_add:
+    path:     /articles/add
+    defaults: { _controller: AdminBundle:Admin:addArticles }
+
+admin_articles_mod:
+    path:     /articles/mod/{id}
+    defaults: { _controller: AdminBundle:Admin:modArticles }
+
+admin_articles_del:
+    path:     /articles/del/{id}
+    defaults: { _controller: AdminBundle:Admin:delArticles }
+
+
+admin_sales:
+    path:     /sales
+    defaults: { _controller: AdminBundle:Admin:sales }
+
+admin_sales_add:
+    path:     /sales/add
+    defaults: { _controller: AdminBundle:Admin:addsales }
+
+admin_sales_mod:
+    path:     /sales/mod/{id}
+    defaults: { _controller: AdminBundle:Admin:modsales }
+
+admin_sales_del:
+    path:     /sales/del/{id}
+    defaults: { _controller: AdminBundle:Admin:delsales }

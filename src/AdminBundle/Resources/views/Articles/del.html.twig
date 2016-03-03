@@ -1,0 +1,22 @@
+{% extends "SiteBundle::layout.html.twig" %}
+
+{% block title %}
+   Admin Section - delete an article {{ parent() }}
+{% endblock %}
+
+{% block body %}
+<section id="index" style="min-height:60vh;">
+    <div class="row" style="margin-top:20px;">
+      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+        <div class="row well">
+          <h1>Delete an article</h1>
+            <!-- table with all the subscribers -->
+            {{ form_start(form) }}
+            <input type="submit" class="btn btn-danger" value="delete"/>
+            {{ form_end(form) }}
+            
+        </div>
+      </div>
+    </div>
+</section>
+{% endblock %}

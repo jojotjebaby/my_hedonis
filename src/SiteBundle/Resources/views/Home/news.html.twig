@@ -1,0 +1,76 @@
+{% extends "SiteBundle::layout.html.twig" %}
+
+{% block title %}
+   News - {{ parent() }}
+{% endblock %}
+
+{% block javascripts %}
+  <style type="text/css">
+    .link {
+      color:inherit;
+      text-decoration: none; 
+      background-color: none;
+    }
+    .jumbotron p {
+      margin-bottom: 15px;
+      font-size: 14px;
+      font-weight: 0;
+    }
+
+  </style>
+{% endblock %}
+
+{% block body %}
+<section id="index" style="min-height:60vh;">
+    <div class="row" style="margin-top:20px;">
+      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+        <div class="row">
+          <!-- begin of the news section -->
+      
+          
+              <!-- partie gauche de la page, tous les message impaires -->
+              <div class="col-md-5 col-lg-5 col-md-offset-1 col-lg-offset-1" >
+                <div class="row">
+                  {% for article in leftArticles %}
+                    <div class="jumbotron" style="margin-right:5px;">
+                      <h3>{{ article.title }}</h3>
+                      <p>{{ article.date|date("d/m/Y") }}</p>
+                      {% if article.picture is not null %}
+                        <img src="/uploads/img/{{ article.picture.id }}.{{ article.picture.src }}" alt="" style="max-width:90%; max-height:250px;">
+                      {% endif %}
+                      <p>{{ article.content }}</p>
+                      {% if article.hyperlink is not null %}
+                        <a href="{{ article.hyperlink }}" target="_blank">More info...</a>
+                      {% endif %}
+                    </div>
+                  {% endfor %}
+                </div>
+              </div>
+              <!-- partie droite de la page, tous les messages paires -->
+              <div class="col-md-5 col-lg-5 " style="margin-top:40px;" >
+                <div class="row">
+                  {% for article in rightArticles %}
+                    <div class="jumbotron" style="margin-left:5px;">
+                      <h3>{{ article.title }}</h3>
+                      <p>{{ article.date|date("d/m/Y") }}</p>
+                      {% if article.picture is not null %}
+                        <img src="/uploads/img/{{ article.picture.id }}.{{ article.picture.src }}" alt="" style="max-width:90%; max-height:250px;">
+                      {% endif %}
+                      <p>{{ article.content }}</p>
+                      {% if article.hyperlink is not null %}
+                        <a href="{{ article.hyperlink }}" target="_blank">More info...</a>
+                      {% endif %}
+                    </div>
+                  {% endfor %}
+                </div>
+              </div>
+      
+          
+
+
+
+        </div>
+      </div>
+    </div>
+</section>
+{% endblock %}

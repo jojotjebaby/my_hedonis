@@ -1,0 +1,64 @@
+{% extends "SiteBundle::layout.html.twig" %}
+
+{% block title %}
+   Admin Section - Add a new article {{ parent() }}
+{% endblock %}
+
+{% block body %}
+<section id="index" style="min-height:60vh;">
+    <div class="row" style="margin-top:20px;">
+      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+        <div class="row well">
+          <h1>Add a new article</h1>
+            <!-- table with all the subscribers -->
+            {{ form_start(form) }}
+
+              <div class="form-group">
+                {{ form_label(form.name, 'Name', {'label_attr': {'class': 'foo'}}) }}
+                {{ form_widget(form.name, {'attr': {'class': 'form-control'}}) }}
+              </div>
+
+              <div class="form-group">
+                {{ form_label(form.adresse, 'Adress', {'label_attr': {'class': 'foo'}}) }}
+                {{ form_widget(form.adresse, {'attr': {'class': 'form-control'}}) }}
+              </div>
+
+              <div class="form-group">
+                {{ form_label(form.state, 'Provincie', {'label_attr': {'class': 'foo'}}) }}
+                {{ form_widget(form.state, {'attr': {'class': 'form-control'}}) }}
+              </div>
+
+              <div class="form-group">
+                {{ form_label(form.tel, 'Tel', {'label_attr': {'class': 'foo'}}) }}
+                {{ form_widget(form.tel, {'attr': {'class': 'form-control'}}) }}
+              </div>
+
+              <div class="form-group">
+                {{ form_label(form.website, 'Website', {'label_attr': {'class': 'foo'}}) }}
+                {{ form_widget(form.website, {'attr': {'class': 'form-control'}}) }}
+              </div>
+
+              <div class="form-group">
+                {{ form_label(form.type, 'Type', {'label_attr': {'class': 'foo'}}) }}
+                {{ form_widget(form.type, {'attr': {'class': 'form-control'}}) }}
+              </div>
+
+              <div class="form-group">
+                {{ form_label(form.lattitude, 'Lattitude', {'label_attr': {'class': 'foo'}}) }}
+                {{ form_widget(form.lattitude, {'attr': {'class': 'form-control'}}) }}
+              </div>
+
+              <div class="form-group">
+                {{ form_label(form.longitude, 'Longitude', {'label_attr': {'class': 'foo'}}) }}
+                {{ form_widget(form.longitude, {'attr': {'class': 'form-control'}}) }}
+              </div>
+
+              <input type="submit" class="btn btn-success"/>
+            
+            {{ form_end(form) }}
+            
+        </div>
+      </div>
+    </div>
+</section>
+{% endblock %}

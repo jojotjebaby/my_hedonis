@@ -1,0 +1,31 @@
+site_index:
+    path:     /
+    defaults: { _controller: SiteBundle:Home:index }
+
+site_about:
+    path:     /about
+    defaults: { _controller: SiteBundle:Home:about }
+
+site_beer_ouwenduiker:
+    path:     /ouwenduiker
+    defaults: { _controller: SiteBundle:Home:oldDuiker }
+
+site_beer_excuse:
+    path:     /excusemewhileikissmystout
+    defaults: { _controller: SiteBundle:Home:stout }
+
+site_news:
+    path:     /news
+    defaults: { _controller: SiteBundle:Home:news }
+
+site_sales:
+    path:     /verkoop
+    defaults: { _controller: SiteBundle:Home:sales }
+
+site_contact:
+    path:     /contact
+    defaults: { _controller: SiteBundle:Home:contact }
+
+site_subscribe:
+    path:     /api/subscribe
+    defaults: { _controller: SiteBundle:Subscriber:subscribe }

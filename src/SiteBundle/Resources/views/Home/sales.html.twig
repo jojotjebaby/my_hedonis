@@ -1,0 +1,325 @@
+{% extends "SiteBundle::layout.html.twig" %}
+
+{% block title %}
+   Verkooppunten - {{ parent() }}
+{% endblock %}
+
+{% block javascript %}
+
+<script src="https://maps.googleapis.com/maps/api/js" type="text/javascript"></script>
+<script type="text/javascript">
+  function initialize() {
+  
+  var bar = new google.maps.MarkerImage(
+    "https://maps.google.com/mapfiles/kml/shapes/bars.png",
+    null, /* size is determined at runtime */
+    null, /* origin is 0,0 */
+    null, /* anchor is bottom center of the scaled image */
+    new google.maps.Size(32, 40)
+  );
+  var shop = new google.maps.MarkerImage(
+    "https://maps.google.com/mapfiles/kml/shapes/grocery.png",
+    null, /* size is determined at runtime */
+    null, /* origin is 0,0 */
+    null, /* anchor is bottom center of the scaled image */
+    new google.maps.Size(32, 40)
+  );
+
+  // declaring the map
+  var map = new google.maps.Map(document.getElementById('map'), {
+        center: new google.maps.LatLng(51, 3.5),
+        zoom: 9
+    });
+//westvlaanderen 
+  {% set i = 0 %}
+  {% for sales in listSales.west %}
+
+  //decleration of the position
+  var westbar{{ i }} = {lat: {{ sales.lattitude }}, lng: {{ sales.longitude }}};
+  //creating the marker
+  var westmarker{{ i }} = new google.maps.Marker({
+        position: westbar{{ i }},
+        map: map,
+        {% if sales.type == 'bar' %}
+          icon: bar
+        {% elseif sales.type == 'shop' %}
+          icon: shop
+        {% endif %}
+    });
+
+  google.maps.event.addListener(westmarker{{ i }}, 'click', function (westmarker{{ i }}, i) {        
+      $('.boxes').removeClass('boxactive');
+      $('#west-container{{ i }}').addClass('boxactive');
+      $('#myTabs li:eq(0) a').tab('show');
+       {% set position = i * 200 %}
+      $('#ex3').animate({scrollTop:({{ position }})}, 'slow');
+    });
+
+  {% set i = i+1 %}
+  {% endfor %}
+//oostvlaanderen
+  {% set i = 0 %}
+  {% for sales in listSales.oost %}
+
+  //decleration of the position
+  var oostbar{{ i }} = {lat: {{ sales.lattitude }}, lng: {{ sales.longitude }}};
+  //creating the marker
+  var oostmarker{{ i }} = new google.maps.Marker({
+        position: oostbar{{ i }},
+        map: map,
+        {% if sales.type == 'bar' %}
+          icon: bar
+        {% elseif sales.type == 'shop' %}
+          icon: shop
+        {% endif %}
+    });
+
+  google.maps.event.addListener(oostmarker{{ i }}, 'click', function (oostmarker{{ i }}, i) {        
+      $('.boxes').removeClass('boxactive');
+      $('#oost-container{{ i }}').addClass('boxactive');
+      $('#myTabs li:eq(1) a').tab('show');
+      {% set position = i * 200 %}
+      $('#ex3').animate({scrollTop:({{ position }})}, 'slow')
+    });
+
+  {% set i = i+1 %}
+  {% endfor %}
+//Antwerpen section
+{% set i = 0 %}
+  {% for sales in listSales.antwerpen %}
+
+  //decleration of the position
+  var antbar{{ i }} = {lat: {{ sales.lattitude }}, lng: {{ sales.longitude }}};
+  //creating the marker
+  var antmarker{{ i }} = new google.maps.Marker({
+        position: antbar{{ i }},
+        map: map,
+        {% if sales.type == 'bar' %}
+          icon: bar
+        {% elseif sales.type == 'shop' %}
+          icon: shop
+        {% endif %}
+    });
+
+  google.maps.event.addListener(antmarker{{ i }}, 'click', function (antmarker{{ i }}, i) {        
+      $('.boxes').removeClass('boxactive');
+      $('#ant-container{{ i }}').addClass('boxactive');
+      $('#myTabs li:eq(2) a').tab('show');
+      {% set position = i * 200 %}
+      $('#ex3').animate({scrollTop:({{ position }})}, 'slow')
+    });
+
+  {% set i = i+1 %}
+  {% endfor %}
+
+//limburg section
+
+{% set i = 0 %}
+  {% for sales in listSales.limburg %}
+
+  //decleration of the position
+  var limbar{{ i }} = {lat: {{ sales.lattitude }}, lng: {{ sales.longitude }}};
+  //creating the marker
+  var limmarker{{ i }} = new google.maps.Marker({
+        position: limbar{{ i }},
+        map: map,
+        {% if sales.type == 'bar' %}
+          icon: bar
+        {% elseif sales.type == 'shop' %}
+          icon: shop
+        {% endif %}
+    });
+
+  google.maps.event.addListener(limmarker{{ i }}, 'click', function (limmarker{{ i }}, i) {        
+      $('.boxes').removeClass('boxactive');
+      $('#lim-container{{ i }}').addClass('boxactive');
+      $('#myTabs li:eq(3) a').tab('show');
+      {% set position = i * 200 %}
+      $('#ex3').animate({scrollTop:({{ position }})}, 'slow')
+    });
+
+  {% set i = i+1 %}
+  {% endfor %}
+
+//vlaams brabant section
+
+{% set i = 0 %}
+  {% for sales in listSales.vlaams %}
+
+  //decleration of the position
+  var vlabar{{ i }} = {lat: {{ sales.lattitude }}, lng: {{ sales.longitude }}};
+  //creating the marker
+  var vlamarker{{ i }} = new google.maps.Marker({
+        position: vlabar{{ i }},
+        map: map,
+        {% if sales.type == 'bar' %}
+          icon: bar
+        {% elseif sales.type == 'shop' %}
+          icon: shop
+        {% endif %}
+    });
+
+  google.maps.event.addListener(vlamarker{{ i }}, 'click', function (vlamarker{{ i }}, i) {        
+      $('.boxes').removeClass('boxactive');
+      $('#vla-container{{ i }}').addClass('boxactive');
+      $('#myTabs li:eq(4) a').tab('show');
+      {% set position = i * 200 %}
+      $('#ex3').animate({scrollTop:({{ position }})}, 'slow')
+    });
+
+  {% set i = i+1 %}
+  {% endfor %}
+}
+google.maps.event.addDomListener(window, 'load', initialize);
+
+
+</script>
+
+
+{% endblock %}
+
+{% block body %}
+<section id="index" style="min-height:60vh;">
+    <div class="row" style="margin-top:20px;">
+      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+        <div class="row">
+          <!-- Begin of the sales pagina -->
+
+
+
+          <div class="jumbotron">
+            <div class="container">
+            <h1 style="font-family: 'Potsdam' ">Onze verdelers</h1>
+              <div class="row">
+                <div  class="container col-xs-12 col-sm-12 col-md-7 col-lg-7">
+                  <div class="container">
+                    <div id="map" class="map"></div>
+                  </div>
+                </div>
+
+
+
+
+                <div id="myTabs" class="col-xs-12 col-sm-12 col-md-5 col-lg-5">
+                
+                    <ul class="nav nav-tabs" role="tablist">
+                    <li role="presentation" class="active"><a href="#West-Vlaanderen" aria-controls="West-Vlaanderen" role="tab" data-toggle="tab">West-Vlaanderen</a></li>
+                    <li role="presentation"><a href="#Oost-Vlaanderen" aria-controls="Oost-Vlaanderen" role="tab" data-toggle="tab">Oost-Vlaanderen</a></li>
+                    <li role="presentation"><a href="#Antwerpen" aria-controls="Antwerpen" role="tab" data-toggle="tab">Antwerpen</a></li>
+                    <li role="presentation"><a href="#Limburg" aria-controls="Limburg" role="tab" data-toggle="tab">Limburg</a></li>
+                    <li role="presentation"><a href="#Vlaams-Brabant" aria-controls="Vlaams-Brabant" role="tab" data-toggle="tab">Vlaams-Brabant</a></li>
+                    </ul>
+
+                    <div class="scrollbar" id="ex3">
+                      <div class="contentbar">
+                        <div class="tab-content">
+
+                        <div role="tabpanel" class="tab-pane active" id="West-Vlaanderen">
+                          <!-- box for every bar -->
+                          {% set i = 0 %}
+                          {% for sales in listSales.west %}
+                              <div class="boxinactive boxes" id="west-container{{ i }}">
+                                <div class="contentbox">
+                                  <h3>{{ sales.name }}</h3>
+                                  <p>{{ sales.adresse }}</br>tel : {{ sales.tel }}</p>
+                                  {% if sales.website is not null %}
+                                    <a href="{{ sales.website }}" target="_blank"> Bekijk de website</a>
+                                  {% endif %}
+                                </div>
+                              </div>
+                            {% set i = i+1 %}
+                          {% endfor %}
+
+                        </div>
+                        <!-- Oost vlaanderen tab -->
+                        <div role="tabpanel" class="tab-pane" id="Oost-Vlaanderen">
+                          {% set i = 0 %}
+                          {% for sales in listSales.oost %}
+                              <div class="boxinactive boxes" id="oost-container{{ i }}">
+                                <div class="contentbox">
+                                  <h3>{{ sales.name }}</h3>
+                                  <p>{{ sales.adresse }}</br>tel : {{ sales.tel }}</p>
+                                  {% if sales.website is not null %}
+                                    <a href="{{ sales.website }}" target="_blank"> Bekijk de website</a>
+                                  {% endif %}
+                                </div>
+                              </div>
+                            {% set i = i+1 %}
+                          {% endfor %}
+                        </div>
+                        <!-- Antwerpen tab -->
+                        <div role="tabpanel" class="tab-pane" id="Antwerpen">
+                          {% set i = 0 %}
+                          {% for sales in listSales.antwerpen %}
+                              <div class="boxinactive boxes" id="ant-container{{ i }}">
+                                <div class="contentbox">
+                                  <h3>{{ sales.name }}</h3>
+                                  <p>{{ sales.adresse }}</br>tel : {{ sales.tel }}</p>
+                                  {% if sales.website is not null %}
+                                    <a href="{{ sales.website }}" target="_blank"> Bekijk de website</a>
+                                  {% endif %}
+                                </div>
+                              </div>
+                            {% set i = i+1 %}
+                          {% endfor %}
+                        </div>
+                        <!-- Limburg tab -->
+                        <div role="tabpanel" class="tab-pane" id="Limburg">
+                          {% set i = 0 %}
+                          {% for sales in listSales.limburg %}
+                              <div class="boxinactive boxes" id="lim-container{{ i }}">
+                                <div class="contentbox">
+                                  <h3>{{ sales.name }}</h3>
+                                  <p>{{ sales.adresse }}</br>tel : {{ sales.tel }}</p>
+                                  {% if sales.website is not null %}
+                                    <a href="{{ sales.website }}" target="_blank"> Bekijk de website</a>
+                                  {% endif %}
+                                </div>
+                              </div>
+                            {% set i = i+1 %}
+                          {% endfor %}
+                        </div>
+                        <!-- Vlaams Brabant tab -->
+                        <div role="tabpanel" class="tab-pane" id="Vlaams-Brabant">
+                          {% set i = 0 %}
+                          {% for sales in listSales.vlaams %}
+                              <div class="boxinactive boxes" id="vla-container{{ i }}">
+                                <div class="contentbox">
+                                  <h3>{{ sales.name }}</h3>
+                                  <p>{{ sales.adresse }}</br>tel : {{ sales.tel }}</p>
+                                  {% if sales.website is not null %}
+                                    <a href="{{ sales.website }}" target="_blank"> Bekijk de website</a>
+                                  {% endif %}
+                                </div>
+                              </div>
+                            {% set i = i+1 %}
+                          {% endfor %}
+                        </div>
+                        </div>
+                      </div>
+                    </div>  
+                </div>
+              </div>
+              </br>
+              </br>
+            </div>
+          </div>
+        </div> 
+
+
+
+
+
+
+
+
+
+      
+
+
+
+        </div>
+      </div>
+    </div>
+</section>
+{% endblock %}

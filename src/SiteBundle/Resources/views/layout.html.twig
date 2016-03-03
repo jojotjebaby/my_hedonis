@@ -1,0 +1,80 @@
+<!DOCTYPE HTML>
+<html class="no-js" lang="nl">
+    <head>
+        <meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<title>{% block title %}Hedonis Ambachtsbier{% endblock %}</title>
+		<link rel="icon" type="image/png" href="img/favicon.png" />
+		<meta name="description" content="Dit is de homepagina van Hedonis Ambachtsbier. Hier vind je alle laatste nieuwtjes !">
+		<meta name="keywords" content="Hedonis, Ambachtsbier, Gent, Bier, Brouwen, Ouwen duiker, excuse me while I kiss my stout, gentbrugge" />
+		<meta name="robots" content="index, follow" />
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" integrity="sha256-7s5uDGW3AHqw6xtJmNNtr+OBRJUlgkNJEo78P4b0yRw= sha512-nNo+yCHEyn0smMxSswnf/OnX6/KwJuZTlNZBjauKhTK0c+zT+q5JOCx0UFhXQ6rJR9jg6Es8gPuD2uZcYDLqSw==" crossorigin="anonymous">
+		
+      	<link rel="stylesheet" href="/css/custom.css" type="text/css" />
+      	<link rel="stylesheet" href="/css/age-verification.css" type="text/css" />
+      	<link rel="stylesheet" href="/css/font-awesome.css" type="text/css" />
+ 
+    	{% block javascript %}
+    	{% endblock %}
+
+	</head>
+	<body>
+		<!--The Nav bar -->
+		{{ include('SiteBundle:Layout:navbar.html.twig') }}
+
+		<div class="container" style="margin-top:90px;">
+			<div  id="flashmessage" class="row text-center" style="margin-top:50px;position:absolute;margin: 0 auto;left: 0;right: 0;width:200px;z-index: 500;cursor:pointer;">
+		    	{% for flash_message in app.session.flashbag.get('warning') %}
+		      		<p class="bg-danger text-center" style="margin-top:10px;z-index: 550;"> {{ flash_message }} </p>
+		    	{% endfor %}
+
+		    	{% for flash_message in app.session.flashbag.get('success') %}
+		      		<p class="bg-success text-center" style="margin-top:10px;z-index: 550;"> {{ flash_message }} </p>
+		    	{% endfor %}
+		  	</div>
+			{% block body %}
+	    	{% endblock %}
+	    </div>
+
+    	<!--The footer -->
+		{{ include('SiteBundle:Layout:footer.html.twig') }}
+
+    	<!--Jquery and Bootstrap JS -->
+    	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    	<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
+    	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha256-KXn5puMvxCw+dAYznun+drMdG1IFl3agK0p/pqT9KAo= sha512-2e8qq0ETcfWRI4HJBzQiA3UoyFk6tbNyG+qSaIBZLyW9Xf3sWZHN/lxe9fTh1U45DpPf07yj94KsUHHWe4Yk1A==" crossorigin="anonymous"></script>
+    	<script type="text/javascript" src="/js/age-verification.js"></script>
+
+    	{% block javascripts %}
+    	{% endblock %}
+    	<script type="text/javascript">
+		  $("#submit_sub").click(function(e) {
+		      e.preventDefault(e);
+		      var name = $('#name').val();
+		      var mail = $('#mail').val();
+		      //ajax to mark it read.
+		      $.ajax({
+		            type: "POST",
+		            url: "{{ path('site_subscribe')}}",
+		            data: 'name=' + name + '&mail=' + mail,
+		            cache: false,
+		            success: function(response){
+		              location.reload();
+		            }
+		        });
+		  });
+		</script>
+		<script type="text/javascript">
+		  $("#flashmessage").click(function(e) {
+		      e.preventDefault(e);
+		      $("#flashmessage").slideUp();
+		  });
+		</script>
+
+
+
+	</body>
+
+
+</html>

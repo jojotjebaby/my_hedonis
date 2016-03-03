@@ -1,0 +1,49 @@
+{% extends "SiteBundle::layout.html.twig" %}
+
+{% block title %}
+   Admin Section - Add a new article {{ parent() }}
+{% endblock %}
+
+{% block body %}
+<section id="index" style="min-height:60vh;">
+    <div class="row" style="margin-top:20px;">
+      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+        <div class="row well">
+          <h1>Add a new article</h1>
+            <!-- table with all the subscribers -->
+            {{ form_start(form) }}
+
+              <div class="form-group">
+                {{ form_label(form.title, 'Title', {'label_attr': {'class': 'foo'}}) }}
+                {{ form_widget(form.title, {'attr': {'class': 'form-control'}}) }}
+              </div>
+
+              <div class="form-group">
+                {{ form_label(form.content, 'Content', {'label_attr': {'class': 'foo'}}) }}
+                {{ form_widget(form.content, {'attr': {'class': 'form-control'}}) }}
+              </div>
+
+              <div class="form-group">
+                {{ form_label(form.date, 'Date', {'label_attr': {'class': 'foo'}}) }}
+                {{ form_widget(form.date, {'attr': {'class': 'form-control'}}) }}
+              </div>
+
+              <div class="form-group">
+                {{ form_label(form.hyperlink, 'Hyperlink', {'label_attr': {'class': 'foo'}}) }}
+                {{ form_widget(form.hyperlink, {'attr': {'class': 'form-control'}}) }}
+              </div>
+
+              <div class="form-group">
+                {{ form_label(form.picture.file, 'Title', {'label_attr': {'class': 'foo'}}) }}
+                {{ form_widget(form.picture.file, {'attr': {'class': 'form-control'}}) }}
+              </div>
+
+              <input type="submit" class="btn btn-success"/>
+            
+            {{ form_end(form) }}
+            
+        </div>
+      </div>
+    </div>
+</section>
+{% endblock %}

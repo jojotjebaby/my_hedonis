@@ -1,0 +1,24 @@
+<div class="jumbotron" style="padding-right: 0px;padding-left: 0px;padding-top:20px;padding-bottom:20px;">
+	<a href="news" style="color:inherit;"><h1 style="font-family: 'Potsdam';text-align: center; ">In de Kijker</h1></a>
+	<div class="scrollbar" id="ex3">
+		<div class="content">
+				
+
+		{% for article in listArticles %}
+			<div style="padding-top: 10px;padding-left: 10px; padding-right:10px;" class="article">
+				{% if article.picture is not null %}
+					<img src="/uploads/img/{{ article.picture.id }}.{{ article.picture.src }}" alt="" style="max-width:90%; max-height:250px;">
+				{% endif %}
+				<h3>{{ article.title }}</h3>
+				<p>{{ article.content }}</p>
+
+				{% if article.hyperlink is not null %}
+					<a href="{{ article.hyperlink }}" target="_blank">More info...</a>
+				{% endif %}
+			</div>
+		{% endfor %}
+
+
+		</div>
+	</div>
+</div>
