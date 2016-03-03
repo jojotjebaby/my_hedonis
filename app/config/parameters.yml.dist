@@ -21,4 +21,3 @@ parameters:
     #the passwords for the users
     password_leo: $2y$12$Q7VKhq8k/9S3Hdu4qLX5pesS1UsZcmykXI7AzVCWUlXyJ5gBOIvFm
     password_joris: $2y$12$Fh5E0XQRwkSg/OhmAjW1TuMiHO637lTdrf7QwwDO4V6UwhbEIqM96
-    
