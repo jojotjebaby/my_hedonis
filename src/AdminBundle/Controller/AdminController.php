@@ -26,7 +26,7 @@ class AdminController extends Controller
     
     public function subscribersAction()
     {
-        $listSub = $this->getDoctrine()->getRepository('SiteBundle:Subscriber')->findAll(array(), array('date'=>'desc'));
+        $listSub = $this->getDoctrine()->getRepository('SiteBundle:Subscriber')->findAll();
         return $this->render('AdminBundle:Subscribers:subscribers.html.twig',array(
             'listSub' => $listSub,
         ));
@@ -34,7 +34,7 @@ class AdminController extends Controller
 
     public function articlesAction()
     {
-        $listArticles = $this->getDoctrine()->getRepository('SiteBundle:Article')->findAll();
+        $listArticles = $this->getDoctrine()->getRepository('SiteBundle:Article')->findAll(array(), array('date'=>'desc'));
         return $this->render('AdminBundle:Articles:articles.html.twig',array(
             'listArticles' => $listArticles,
         ));

@@ -36,7 +36,7 @@
                       <h3>{{ article.title }}</h3>
                       <p>{{ article.date|date("d/m/Y") }}</p>
                       {% if article.picture is not null %}
-                        <img src="/uploads/img/{{ article.picture.id }}.{{ article.picture.src }}" class="text-center" alt="" style="max-width:90%; max-height:250px;">
+                        <img src="/uploads/img/{{ article.picture.id }}.{{ article.picture.src }}" class="text-center" alt="" style="max-width:90%; margin-left:5%;">
                       {% endif %}
                       <p>{{ article.content }}</p>
                       {% if article.hyperlink is not null %}
@@ -54,7 +54,7 @@
                       <h3>{{ article.title }}</h3>
                       <p>{{ article.date|date("d/m/Y") }}</p>
                       {% if article.picture is not null %}
-                        <img src="/uploads/img/{{ article.picture.id }}.{{ article.picture.src }}"  class="text-center" alt="" style="max-width:90%; max-height:250px;">
+                        <img src="/uploads/img/{{ article.picture.id }}.{{ article.picture.src }}"  class="text-center" alt="" style="max-width:90%; margin-left:5%;">
                       {% endif %}
                       <p>{{ article.content }}</p>
                       {% if article.hyperlink is not null %}
