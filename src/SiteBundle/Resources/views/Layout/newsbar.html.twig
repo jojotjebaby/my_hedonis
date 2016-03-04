@@ -7,10 +7,10 @@
 		{% for article in listArticles %}
 			<div style="padding-top: 10px;padding-left: 10px; padding-right:10px;" class="article">
 				{% if article.picture is not null %}
-					<img src="/uploads/img/{{ article.picture.id }}.{{ article.picture.src }}" class="text-center" alt="" style="max-width:90%; max-height:250px;">
+					<img src="/uploads/img/{{ article.picture.id }}.{{ article.picture.src }}" class="text-center" alt="" style="max-width:90%;margin-left:5%;">
 				{% endif %}
-				<h3>{{ article.title }}</h3>
-				<p>{{ article.content }}</p>
+				<h2>{{ article.title }}</h2>
+				<p style="font-size: 16px;">{{ article.content }}</p>
 
 				{% if article.hyperlink is not null %}
 					<a href="{{ article.hyperlink }}" target="_blank">More info...</a>
