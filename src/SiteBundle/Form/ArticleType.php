@@ -7,6 +7,7 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 
 use SiteBundle\Form\PictureType;
 
@@ -20,9 +21,9 @@ class ArticleType extends AbstractType
     {
         $builder
             ->add('title', TextType::class)
-            ->add('content', TextType::class)
+            ->add('content', TextareaType::class)
             ->add('date', DateType::class)
-            ->add('hyperlink',TextType::class)
+            ->add('hyperlink',TextType::class,array('required' => false))
             ->add('picture', PictureType::class,array('required' => false))
         ;
     }
