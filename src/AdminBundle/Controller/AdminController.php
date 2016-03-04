@@ -43,7 +43,7 @@ class AdminController extends Controller
     public function addArticlesAction(request $request)
     {
         $article = new article();
-        $artcile->setDate(\new Datetime());
+        $artcile->setDate(new \Datetime());
         $form = $this->createForm(ArticleType::class, $article);
 
         $form->handleRequest($request);

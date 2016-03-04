@@ -7,7 +7,7 @@
 		{% for article in listArticles %}
 			<div style="padding-top: 10px;padding-left: 10px; padding-right:10px;" class="article">
 				{% if article.picture is not null %}
-					<img src="/uploads/img/{{ article.picture.id }}.{{ article.picture.src }}" alt="" style="max-width:90%; max-height:250px;">
+					<img src="/uploads/img/{{ article.picture.id }}.{{ article.picture.src }}" class="text-center" alt="" style="max-width:90%; max-height:250px;">
 				{% endif %}
 				<h3>{{ article.title }}</h3>
 				<p>{{ article.content }}</p>
