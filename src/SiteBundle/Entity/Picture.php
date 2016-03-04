@@ -40,7 +40,13 @@ class Picture
 
     private $tempFilename;
 
-      
+    
+    public function getFile()
+    {
+    return $this->file;
+    }
+
+
     public function setFile(UploadedFile $file)
     {
         $this->file = $file;
