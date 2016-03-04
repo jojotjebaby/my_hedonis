@@ -31,7 +31,7 @@ av_showmodal = function() {
 
 	// Question Content
 	var content_heading = $('<h2>Ben jij + 18 ?</h2>');
-	var content_buttons = $('<nav><ul><li><a href="#nothing" class="av_btn av_no" rel="no"><img src="../img/age/1.png" style="height:80px;width:80px;"><h2 class="imgDescription"> -18 jaar</h2>Kid</a></li><li><a href="#nothing" class="av_btn av_go" rel="yes"><img src="../img/age/2.png" style="height:80px;width:80px;"><h2 class="imgDescription"> +18 jaar</h2>adult</a></li></nav');
+	var content_buttons = $('<nav><ul><li><a href="#nothing" class="av_btn av_no" rel="no"><img src="/img/age/1.png" style="height:80px;width:80px;"><h2 class="imgDescription"> -18 jaar</h2>Kid</a></li><li><a href="#nothing" class="av_btn av_go" rel="yes"><img src="/img/age/2.png" style="height:80px;width:80px;"><h2 class="imgDescription"> +18 jaar</h2>adult</a></li></nav');
 	var content_text = $('<p>Je moet minimum 18 jaar zijn om deze pagina te kunnen bekijken.</p>');
 
 	// Regret Content
