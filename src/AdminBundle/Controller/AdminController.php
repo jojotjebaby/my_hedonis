@@ -26,7 +26,7 @@ class AdminController extends Controller
     
     public function subscribersAction()
     {
-        $listSub = $this->getDoctrine()->getRepository('SiteBundle:Subscriber')->findAll();
+        $listSub = $this->getDoctrine()->getRepository('SiteBundle:Subscriber')->findAll(array(), array('date'=>'desc'));
         return $this->render('AdminBundle:Subscribers:subscribers.html.twig',array(
             'listSub' => $listSub,
         ));
@@ -43,6 +43,7 @@ class AdminController extends Controller
     public function addArticlesAction(request $request)
     {
         $article = new article();
+        $artcile->setDate(\new Datetime());
         $form = $this->createForm(ArticleType::class, $article);
 
         $form->handleRequest($request);
