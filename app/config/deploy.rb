@@ -30,7 +30,7 @@ set :writable_dirs, ["app/cache", "app/logs"] # Application des droits nécessai
 set :webserver_user, "www-data" # L’utilisateur de votre serveur web (Apache, nginx, etc.)
 set :permission_method, :chown # Dans le cas où vous n’avez pas les ACLs, ne pas oublier de mettre :use_sudo à true
 set :use_set_permissions, true
-set :dump_assetic_assets, true # dumper les assets
+#set :dump_assetic_assets, true # dumper les assets
 
 #default_run_options[:pty] = true # Si vous avez cette erreur : no tty present and no askpass program specified, alors décommentez
 #ssh_options[:forward_agent] = true # Idem que ci-dessus
