@@ -1,8 +1,7 @@
 set :application, "hedonisambachtsbier.be"
 set :domain, "joris@hedonisambachtsbier.be" # Le SSH de destination
 set :deploy_to, "/var/www/hedonisambachtsbier.be" # Le répertoire de destination
-set :app_path, "app"
-set :web_path, "web"
+set :app_path, "app" # Le dossier d’application, laissez app
 set :user, "joris" # Le nom d’utilisateur du serveur distant
 
 set :repository, "git@github.com:jojotjebaby/my_hedonis.git" # L’URL de votre repository
@@ -27,7 +26,7 @@ set :shared_children, [app_path + "/logs", "vendor", web_path + "/uploads"] # Id
 set :use_composer, true
 set :update_vendors, false # Il est conseillé de laisser a false et de ne pas faire de ‘composer update’ directement sur la prod
 #set :composer_options, "--verbose --prefer-dist" # Permet de spécifier des paramètres supplémentaires à composer, inutile dans notre cas
-set :writable_dirs, ["var/cache", "var/logs"] # Application des droits nécessaires en écriture sur les dossiers
+set :writable_dirs, ["app/cache", "app/logs"] # Application des droits nécessaires en écriture sur les dossiers
 set :webserver_user, "www-data" # L’utilisateur de votre serveur web (Apache, nginx, etc.)
 set :permission_method, :chown # Dans le cas où vous n’avez pas les ACLs, ne pas oublier de mettre :use_sudo à true
 set :use_set_permissions, true
