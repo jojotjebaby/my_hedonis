@@ -36,7 +36,7 @@ class SalesType extends AbstractType
                 'Oost-vlaanderen' => 'oost-vlaanderen',
                 'Vlaams-brabant' => 'vlaams-brabant',
                 'Waals-brabant' => 'waals-brabant',
-                'West-vlaanderen' => 'west-vlaanderen'
+                'West-vlaanderen' => 'west-vlaanderen',
                 'Buitenland' => 'buitenland'
             ),'choices_as_values' => true))
         ;
