@@ -169,6 +169,35 @@
 
   {% set i = i+1 %}
   {% endfor %}
+
+//Buitenland
+  {% set i = 0 %}
+  {% for sales in listSales.buitenland %}
+
+  //decleration of the position
+  var buitenlandbar{{ i }} = {lat: {{ sales.lattitude }}, lng: {{ sales.longitude }}};
+  //creating the marker
+  var buitenlandmarker{{ i }} = new google.maps.Marker({
+        position: westbar{{ i }},
+        map: map,
+        {% if sales.type == 'bar' %}
+          icon: bar
+        {% elseif sales.type == 'shop' %}
+          icon: shop
+        {% endif %}
+    });
+
+  google.maps.event.addListener(buitenlandmarker{{ i }}, 'click', function (buitenlandmarker{{ i }}, i) {        
+      $('.boxes').removeClass('boxactive');
+      $('#buitenland-container{{ i }}').addClass('boxactive');
+      $('#myTabs li:eq(0) a').tab('show');
+       {% set position = i * 210 %}
+      $('#ex3').animate({scrollTop:({{ position }})}, 'slow');
+    });
+
+  {% set i = i+1 %}
+  {% endfor %}
+
 }
 google.maps.event.addDomListener(window, 'load', initialize);
 
@@ -295,6 +324,25 @@ google.maps.event.addDomListener(window, 'load', initialize);
                             {% set i = i+1 %}
                           {% endfor %}
                         </div>
+                        <!--Buitenland -->
+                        <div role="tabpanel" class="tab-pane active" id="Buitenland">
+                          <!-- box for every bar -->
+                          {% set i = 0 %}
+                          {% for sales in listSales.buitenland %}
+                              <div class="boxinactive boxes" id="buitenland-container{{ i }}">
+                                <div class="contentbox">
+                                  <h3>{{ sales.name }}</h3>
+                                  <p>{{ sales.adresse }}</br>tel : {{ sales.tel }}</p>
+                                  {% if sales.website is not null %}
+                                    <a href="{{ sales.website }}" target="_blank"> Bekijk de website</a>
+                                  {% endif %}
+                                </div>
+                              </div>
+                            {% set i = i+1 %}
+                          {% endfor %}
+                        </div>
+
+
                         </div>
                       </div>
                     </div>  

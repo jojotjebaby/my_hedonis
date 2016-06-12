@@ -80,4 +80,18 @@ class SalesRepository extends \Doctrine\ORM\EntityRepository
 	    ->getResult()
 	  ;
 	}
+	public function buitenland()
+	{
+	  $qb = $this->createQueryBuilder('s');
+
+	  $qb->where('s.state = :state')
+	       ->setParameter('state', 'buitenland')
+	     ->orderBy('s.id', 'DESC')
+	  	;
+
+	  return $qb
+	    ->getQuery()
+	    ->getResult()
+	  ;
+	}
 }
