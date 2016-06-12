@@ -69,9 +69,9 @@ class HomeController extends Controller
         $antwerpen = $this->getDoctrine()->getRepository('SiteBundle:Sales') ->antwerpen();
         $limburg = $this->getDoctrine()->getRepository('SiteBundle:Sales') ->limburg();
         $vlaams = $this->getDoctrine()->getRepository('SiteBundle:Sales') ->vlaams();
-        $andere = $this->getDoctrine()->getRepository('SiteBundle:Sales') ->andere();
+        $buitenland = $this->getDoctrine()->getRepository('SiteBundle:Sales') ->buitenland();
 
-        $listSales = array('west'=> $west, 'oost' => $oost, 'antwerpen' => $antwerpen, 'limburg' => $limburg, 'vlaams' => $vlaams, 'andere' => $andere);
+        $listSales = array('west'=> $west, 'oost' => $oost, 'antwerpen' => $antwerpen, 'limburg' => $limburg, 'vlaams' => $vlaams, 'buitenland' => $buitenland);
 
 
         return $this->render('SiteBundle:Home:sales.html.twig',array(
