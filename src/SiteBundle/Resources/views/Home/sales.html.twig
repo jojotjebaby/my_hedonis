@@ -178,7 +178,7 @@
   var buitenlandbar{{ i }} = {lat: {{ sales.lattitude }}, lng: {{ sales.longitude }}};
   //creating the marker
   var buitenlandmarker{{ i }} = new google.maps.Marker({
-        position: westbar{{ i }},
+        position: buitenlandbar{{ i }},
         map: map,
         {% if sales.type == 'bar' %}
           icon: bar
