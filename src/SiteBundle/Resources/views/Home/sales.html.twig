@@ -190,7 +190,7 @@
   google.maps.event.addListener(buitenlandmarker{{ i }}, 'click', function (buitenlandmarker{{ i }}, i) {        
       $('.boxes').removeClass('boxactive');
       $('#buitenland-container{{ i }}').addClass('boxactive');
-      $('#myTabs li:eq(0) a').tab('show');
+      $('#myTabs li:eq(5) a').tab('show');
        {% set position = i * 210 %}
       $('#ex3').animate({scrollTop:({{ position }})}, 'slow');
     });
