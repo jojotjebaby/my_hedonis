@@ -34,6 +34,10 @@ class HomeController extends Controller
     {
         return $this->render('SiteBundle:Beer:stout.html.twig');
     }
+    public function suzanneAction()
+    {
+        return $this->render('SiteBundle:Beer:suzanne.html.twig');
+    }
     public function newsAction()
     {
         $listArticles = $this->getDoctrine()->getRepository('SiteBundle:Article')->findBy(array(),array('date' => 'DESC'));

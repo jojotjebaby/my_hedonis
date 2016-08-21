@@ -7,12 +7,16 @@ site_about:
     defaults: { _controller: SiteBundle:Home:about }
 
 site_beer_ouwenduiker:
-    path:     /ouwenduiker
+    path:     /ouwen-duiker
     defaults: { _controller: SiteBundle:Home:oldDuiker }
 
 site_beer_excuse:
-    path:     /excusemewhileikissmystout
+    path:     /excuse-me-while-i-kiss-my-stout
     defaults: { _controller: SiteBundle:Home:stout }
+
+site_beer_suzanne:
+    path:     /suzanne
+    defaults: { _controller: SiteBundle:Home:suzanne }
 
 site_news:
     path:     /news
