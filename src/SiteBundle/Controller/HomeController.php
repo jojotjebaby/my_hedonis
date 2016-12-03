@@ -84,65 +84,7 @@ class HomeController extends Controller
     }
     public function contactAction(request $request)
     {
-            //the code for the proposition
-        $data = array();
-            $form = $this->createFormBuilder($data)
-                    ->add('name', TextType::class)
-                    ->add('email', EmailType::class)
-                    ->add('message', TextareaType::class)
-
-                    ->add('copy', CheckboxType::class,
-                            array(
-                                'label'    => 'Get a copy of the mail.',
-                                'label_attr' => array(
-                                   'class' => 'checkbox-inline'
-                               ),
-                                'required' => false,
-                            )
-                        )
-                    ->getForm();
-            $form->handleRequest($request);
-        if ($form->isValid()) {
-            // $data is a simply array with your form fields
-            $data = $form->getData();
-            $message = \Swift_Message::newInstance()
-                    ->setSubject('A new challenge proposition')
-                    ->setFrom('noreply@hedonisambachtsbier.be')
-                    ->setTo('contact@hedonisambachtsbier.be')
-                    ->setBody(
-                        $this->renderView(
-                            // app/Resources/views/Emails/registration.html.twig
-                            'Emails/contact.html.twig',
-                            array('text' => $data['message'], 'name' => $data['name'], 'email' => $data['email'])
-                        ),
-                        'text/html'
-                    )
-            ;
-            $this->get('mailer')->send($message);
-            if($data['copy'] === true){
-                //send the message to the user.
-                $secondmessage = \Swift_Message::newInstance()
-                    ->setSubject('Copy of your message to Hedonis Ambachtsbier')
-                    ->setFrom('noreply@hedonisambachtsbier.be')
-                    ->setTo($data['email'])
-                    ->setBody(
-                        $this->renderView(
-                            // app/Resources/views/Emails/registration.html.twig
-                            'Emails/contactcopy.html.twig',
-                            array('text' => $data['message'], 'name' => $data['name'], 'email' => $data['email'])
-                        ),
-                        'text/html'
-                    )
-            ;
-            $this->get('mailer')->send($secondmessage);
-            }
-
-            $this->addFlash('success', 'Your message has been send. Thank you.');
-            return $this->redirect($this->generateUrl('site_index'));
-        }
-        return $this->render('SiteBundle:Home:contact.html.twig', array(
-              'form' => $form->createView(),
-            ));
+        return $this->render('SiteBundle:Home:contact.html.twig');
     }
 
 
